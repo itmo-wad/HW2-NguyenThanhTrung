@@ -1,0 +1,69 @@
+<a href="/user/signout" class="btn btn--secondary">Sign Out</a>
+{% extends "base.html" %}
+{% block content %}
+<div class="card-wrapper">
+    <div class="card">
+        <h2 class="center">Your info</h2>
+        <p>
+            <strong>ID:</strong> {{session['user']['_id']}}<br>
+            <strong>Name:</strong> {{session['user']['name']}}<br>
+            <strong>Email:</strong> {{session['user']['email']}}
+        </p>
+        <img src="{{ user['profile_picture'] }}" alt="This is the Avatar" class="avatar">
+    </div>
+
+    <div class="card">
+        <h2 class="center">Change info</h2>
+        <form action="/update_info" method="POST" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label for="old_password">Old Password:</label>
+            <input type="password" id="old_password" name="old_password">
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password">
+            <label for="confirm_password">Confirm New Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password"><br><br>
+
+            <label for="file">Upload new profile Picture:</label>
+            <input type="file" name="file"><br><br>
+
+            <div class="center">
+                <input type="submit" value="Update Profile" class="btn">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var socket = io();
+
+        socket.on('connect', function () {
+            console.log('Connected to server');
+        });
+
+        socket.on('new_account_notification', function (data) {
+            alert(data.message);
+        });
+
+        socket.on('disconnect', function () {
+            console.log('Disconnected from server');
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach((message) => {
+            setTimeout(() => {
+                message.classList.add('fade-out');
+                setTimeout(() => {
+                    message.remove();
+                }, 1000);
+            }, 2000);
+        });
+    });
+</script>
+{% endblock %}
