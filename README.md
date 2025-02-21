@@ -18,7 +18,7 @@ The 2nd homework assigment\
 
 ## FOLDER CONTENT
 ```bash
-HW2_WAD2025/main\
+HW2_WAD2025/main/
 |-- README.md
 |-- app.py
 |-- run
@@ -91,7 +91,7 @@ Picture 1.1
        <img src="static/images/change_pwd.png" alt="Login Page">
 </div>
 
-**2.3 Allow users to update profile picture (new user will have a default profile picture)**\
+**2.3 Allow users to update profile picture (new user will have a default profile picture)**
 <div align="center">
        <img src="static/images/change_picture.PNG" alt="Login Page">
 </div>
