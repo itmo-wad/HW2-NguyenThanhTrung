@@ -111,6 +111,7 @@ Implement notification, an active user will receive notification when a new acco
 <div align="center">
        <img src="static/images/db2.PNG" alt="Login Page">
 </div>
+
 - Active users receive notification:
 <div align="center">
        <img src="static/images/noti1.PNG" alt="Login Page">
